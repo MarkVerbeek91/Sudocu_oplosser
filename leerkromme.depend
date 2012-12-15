@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1355486085 source:c:\users\mark\documents\projectenmap\programmeren\codeblock\leerkromme\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+
