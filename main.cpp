@@ -13,11 +13,16 @@ unsigned char regel[6][6] = {
 {4, 1, 0, 6, 0, 0},
 {0, 0, 4, 0, 0, 0},
 {2, 6, 0, 0, 0, 0}};
+//gewoon wat variable
 int i = 0,j = 0, x = 0, y = 0, p = 0, temp =0;
 string buffer;
 char *line;
-   int een[6][6], twee[6][6], drie[6][6], vier[6][6], vijf[6][6], zes[6][6];
+
+int een[6][6], twee[6][6], drie[6][6], vier[6][6], vijf[6][6], zes[6][6];
+
+//randen van de hojes, Deze moet wel veranderen in 9x9, misschien ook te automatiseren
 int q[24] = {0, 2, 0, 3, 0, 2, 3, 6, 2, 4, 0, 3, 2, 4, 3, 6, 4, 6, 0, 3, 4, 6, 3, 6};
+
 
 int nul_maker() //bezetten plekken leeg maken
 {
@@ -329,8 +334,7 @@ if(temp != 0) return 1;
 else { printf("done!!\n"); return 100;}
 }
 
-
-int uitprinter0()
+int uitprinter0() //uitprinten van het orgineel
 {
    for(i = 0;i < 6;i++)
     {
@@ -344,7 +348,7 @@ printf("\n");
 return 0;
 }
 
-int uitprinter1()
+int uitprinter1() //uitprinten van de getalmatrixen onder elkaar.
 {
     for(i=0; i<6; i++)
     {
@@ -403,7 +407,7 @@ printf("\n");
 return 0;
 }
 
-int uitprinter2()
+int uitprinter2() //uitprinten van alleen matrix 2
 {
     for(i=0; i<6; i++)
     {
@@ -418,7 +422,7 @@ printf("\n");
 return 0;
 }
 
-int uitprinter7()
+int uitprinter7() //uitprinten van de getalmaticen naast elkaar
 {
     for(i=0; i<6; i++)
     {
@@ -470,7 +474,6 @@ return 0;
 
 int main()
 {
-
 //laten zien van orgineel
 uitprinter0();
 
@@ -489,32 +492,30 @@ uitprinter0();
     }
 
 int var = 0, count = 0;
-while(count < 30) // aantal oplos rondes te houden.
+
+while(count < 30) // aantal oplosrondes te houden.
 {
 //controle op al bezetten plaatsen en discrimineren
     for(i=0; i<6; i++)
+    {
+        for(j=0; j<6; j++)
         {
-            for(j=0; j<6; j++)
-            {
-               nul_maker();
-            }
+            nul_maker();
         }
-
-
+    }
 
 //hokjes chekken.
     for(p=0; p<24; p=p+4)
     {
-
         for(i=q[p]; i<q[p+1]; i++)
         {
             for(j=q[p+2]; j<q[p+3]; j++)
             {
-                    if(regel[i][j] != 0)
-                    {
-                        nul_maker2(regel[i][j]);
+                if(regel[i][j] != 0)
+                {
+                    nul_maker2(regel[i][j]);
                         switch(regel[i][j])
-                           {
+                            {
                             case 1:
                             een[i][j]  = 1;
                             break;
@@ -540,13 +541,13 @@ while(count < 30) // aantal oplos rondes te houden.
                             break;
                             }
 
-                    }
+                }
             }
         }
     }
 
 //rijen en kolomen discrimineren
-for(i=0; i<6; i++)
+    for(i=0; i<6; i++)
         {
             for(j=0; j<6; j++)
             {
